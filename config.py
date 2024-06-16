@@ -1,0 +1,3 @@
+API_ID=28271553  # Sizning API ID
+API_HASH="b93553736038b94d32b5a434c7ac3c3f"  # Sizning API Hash
+GROUP_ID=-1002229880620  # Sizning guruh ID
