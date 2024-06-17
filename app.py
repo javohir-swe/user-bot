@@ -16,10 +16,10 @@ async def handler(event):
         if sender:
             user_link = f'<a href="tg://user?id={sender.id}">{sender.first_name}</a>'
             text_with_link = f"{message.message}\n\n👤 <b>{user_link}</b>"
-            await client.send_message(GROUP_ID, text_with_link, parse_mode='html')
+            await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
         else:
             text_with_link = f"{message.message}\n\n👤 <b>Anonim foydalanuvchi</b>"
-            await client.send_message(GROUP_ID, text=text_with_link, parse_mode='html')
+            await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
     elif message.is_private:
         await message.reply(message.message)
 
