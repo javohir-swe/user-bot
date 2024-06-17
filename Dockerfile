@@ -9,6 +9,6 @@ COPY . .
 
 # Talablar faylidan kerakli kutubxonalarni o'rnatamiz
 RUN pip install --no-cache-dir -r requirements.txt
-
+RUN pip install --upgrade pip
 # Botni ishga tushiramiz
 CMD ["python3", "app.py"]
