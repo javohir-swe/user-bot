@@ -4,3 +4,4 @@ userbot.session-journal
 my_account.session
 config.py
 deploy.md
+__pycache__
