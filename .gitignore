@@ -2,3 +2,5 @@ venv
 userbot.session
 userbot.session-journal
 my_account.session
+config.py
+deploy.md
