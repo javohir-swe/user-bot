@@ -32,8 +32,10 @@ async def handler(event):
                 chat_id_str = str(chat_id)
             
             message_link = f"https://t.me/c/{chat_id_str}/{message_id}"
+            sender = await client.get_entity(message.sender_id)  # Foydalanuvchini olish
+            sender_link = f"tg://user?id={message.sender_id}"  # Foydalanuvchi uchun link yaratish
             
-            text_with_link = f"{message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>"
+            text_with_link = f"{message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>"
             await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
     elif message.is_private:
         await message.reply(message.message)
