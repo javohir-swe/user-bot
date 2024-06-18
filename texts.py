@@ -148,6 +148,8 @@ DONT_TAKE = [
     "obketamiz",
     "opketamiz",
     "olamiz",
+    "ketamiz",
+    "кетамиз",
     "Cobalt",
     "kobalt",
     "moshina",
