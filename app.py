@@ -35,7 +35,7 @@ async def handler(event):
             sender = await client.get_entity(message.sender_id)  # Foydalanuvchini olish
             sender_link = f"tg://user?id={message.sender_id}"  # Foydalanuvchi uchun link yaratish
             
-            text_with_link = f"{message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>"
+            text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>"
             await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
     elif message.is_private:
         await message.reply(message.message)
