@@ -6,3 +6,4 @@ my_account.session
 config.py
 deploy.md
 __pycache__
+test.py
