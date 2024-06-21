@@ -203,6 +203,8 @@ ALL_WORDS = [
     "такси борми",
 ]
 DONT_TAKE = [
+    "yuraman",
+    "юраман",
     "yuramz",
     "yuramiz",
     "toldik",
