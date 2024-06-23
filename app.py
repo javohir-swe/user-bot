@@ -41,7 +41,7 @@ async def handler(event):
             user_number = sender.phone if sender.phone else None  # Telefon raqamini olish
             contact_info = f"\n\n📞 Aloqa: {user_number}" if user_number else ""  # Agar telefon raqami mavjud bo'lsa, qo'shish
 
-            text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>\n\n<b>{contact_info}</b>"
+            text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>\n\n<b>+{contact_info}</b>"
             await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
     elif message.is_private:
         await message.reply(message.message)
