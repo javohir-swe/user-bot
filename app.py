@@ -64,7 +64,8 @@ async def handler(event):
             text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>\n\n<b>{contact_info}</b>"
             await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
     elif message.is_private:
-        await message.reply(message.message)
+        if 'test' in message.message.lower():
+            await message.reply("✅ Ishlayapman")
 
 client.start()
 client.run_until_disconnected()

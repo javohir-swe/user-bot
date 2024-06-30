@@ -216,6 +216,8 @@ ALL_WORDS = [
 ]
 
 DONT_TAKE = [
+    "Хурматли",
+    "📧 Xabar: ",
     "yuraman",
     "qo'shish",
     "odam kerak",
