@@ -4,8 +4,11 @@ from telethon import TelegramClient, events
 from config import API_ID, API_HASH, GROUP_ID
 from texts import ALL_WORDS, DONT_TAKE
 
+
 def check_words(text, words):
     return any(re.search(rf'\b\w*{word}\w*\b', text, re.IGNORECASE) for word in words)
+# 🆔
+
 
 def contains_emoji(text):
     emoji_pattern = re.compile(
@@ -29,10 +32,11 @@ def contains_emoji(text):
 
 client = TelegramClient('userbot_new', API_ID, API_HASH)  # 'userbot_new' - yangi session nomi
 
+
 @client.on(events.NewMessage)
 async def handler(event):
     message = event.message
-    if message.is_group and message.chat_id != GROUP_ID:
+    if (message.is_group or message.is_channel) and message.chat_id != GROUP_ID:
         if len(message.message) > 230 or contains_emoji(message.message):
             return  # Agar xabar 230 tadan uzun bo'lsa, funksiyani to'xtatish
 
