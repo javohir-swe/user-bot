@@ -37,14 +37,14 @@ client = TelegramClient('userbot_new', API_ID, API_HASH)  # 'userbot_new' - yang
 async def handler(event):
     message = event.message
     if (message.is_group or message.is_channel) and message.chat_id != GROUP_ID:
-        if len(message.message) > 230 or contains_emoji(message.message):
+        if len(message.message) > 100 or contains_emoji(message.message):
             return  # Agar xabar 230 tadan uzun bo'lsa, funksiyani to'xtatish
 
         if check_words(message.message, DONT_TAKE):
             return  # Agar DONT_TAKE ichidagi so'zlar bo'lsa, funksiyani to'xtatish
 
         if check_words(message.message, ALL_WORDS):
-            await asyncio.sleep(5)  # 5 soniya kutish
+            await asyncio.sleep(2)  # 2 soniya kutish
             try:
                 # Habarning hali ham mavjudligini tekshirish
                 await client.get_messages(message.chat_id, ids=message.id)
@@ -62,10 +62,14 @@ async def handler(event):
             sender = await client.get_entity(message.sender_id)  # Foydalanuvchini olish
             sender_link = f"tg://user?id={message.sender_id}"  # Foydalanuvchi uchun link yaratish
 
+
             user_number = sender.phone if sender.phone else None  # Telefon raqamini olish
             contact_info = f"📞 Aloqa: +{user_number}" if user_number else ""  # Agar telefon raqami mavjud bo'lsa, qo'shish
 
-            text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar havolasi</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>\n\n<b>{contact_info}</b>"
+            if message.sender_id:
+                text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar</a>\n\n👤 <a href='{sender_link}'>Yuborgan foydalanuvchi</a>\n\n<b>{contact_info}</b>"
+            else:
+                text_with_link = f"<b>📧 Xabar:</b> {message.message}\n\n\n🔗 <a href='{message_link}'>Xabar</a>\n\n<b>{contact_info}</b>"
             await client.send_message(GROUP_ID, message=text_with_link, parse_mode='html')
     elif message.is_private:
         if 'test' in message.message.lower():
